@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misinformation in the Age of LLM Agents · AAAI-27 Tutorial</title>
+  <meta name="description" content="AAAI-27 half-day tutorial on how LLM agents generate, propagate, and intervene on misinformation.">
+  <meta property="og:title" content="Misinformation in the Age of LLM Agents: Generation, Propagation, and Intervention">
+  <meta property="og:description" content="AAAI-27 half-day tutorial by Yuhan Liu, Xiuying Chen, Preslav Nakov, and Xiangliang Zhang.">
+  <meta name="theme-color" content="#f6f4ee">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="container nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>MisinfoAgents</span><span class="brand-venue">AAAI-27</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#outline">Outline</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#presenters">Presenters</a></li>
+      <li><a href="#reading">Reading list</a></li>
+      <li><a href="#materials">Materials</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <p class="kicker">AAAI-27 Tutorial <span class="dot">·</span> Half-day</p>
+      <h1>Misinformation in the Age of LLM&nbsp;Agents</h1>
+      <p class="subtitle">Generation, Propagation, and Intervention</p>
+      <p class="authors">
+        <span>Yuhan Liu<sup>1</sup></span>
+        <span>Xiuying Chen<sup>1</sup></span>
+        <span>Preslav Nakov<sup>1</sup></span>
+        <span>Xiangliang Zhang<sup>2</sup></span>
+      </p>
+      <p class="affils"><sup>1</sup>MBZUAI, Abu Dhabi, UAE &nbsp; <sup>2</sup>University of Notre Dame, USA</p>
+      <dl class="facts">
+        <div><dt>Date</dt><dd>TBA</dd></div>
+        <div><dt>Location</dt><dd>TBA</dd></div>
+        <div><dt>Length</dt><dd>3.5 h + break</dd></div>
+      </dl>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#outline">Tutorial outline</a>
+        <a class="btn btn-ghost" href="#reading">Reading list</a>
+      </div>
+    </div>
+
+    <figure class="hero-figure" aria-label="Diagram: a false claim spreads through a social network while verifier agents correct parts of it">
+      <svg viewBox="0 0 420 360" role="img">
+        <title>Misinformation spreading through an agent network</title>
+        <g class="edges">
+          <line class="e e-false" x1="210" y1="180" x2="120" y2="110"/>
+          <line class="e e-false" x1="210" y1="180" x2="300" y2="100"/>
+          <line class="e e-false" x1="120" y1="110" x2="50" y2="60"/>
+          <line class="e e-false" x1="120" y1="110" x2="200" y2="40"/>
+          <line class="e e-false" x1="300" y1="100" x2="200" y2="40"/>
+          <line class="e e-dim" x1="300" y1="100" x2="390" y2="60"/>
+          <line class="e e-dim" x1="120" y1="110" x2="30" y2="170"/>
+          <line class="e e-dim" x1="210" y1="180" x2="110" y2="240"/>
+          <line class="e e-dim" x1="110" y1="240" x2="30" y2="170"/>
+          <line class="e e-dim" x1="110" y1="240" x2="140" y2="330"/>
+          <line class="e e-dim" x1="230" y1="290" x2="140" y2="330"/>
+          <line class="e e-dim" x1="210" y1="180" x2="330" y2="220"/>
+          <line class="e e-dim" x1="210" y1="180" x2="230" y2="290"/>
+          <line class="e e-dim" x1="300" y1="100" x2="380" y2="160"/>
+          <line class="e e-true" x1="330" y1="220" x2="380" y2="160"/>
+          <line class="e e-true" x1="330" y1="220" x2="400" y2="300"/>
+          <line class="e e-true" x1="330" y1="220" x2="300" y2="330"/>
+          <line class="e e-true" x1="230" y1="290" x2="300" y2="330"/>
+        </g>
+        <g class="nodes">
+          <circle class="n n-amber" cx="390" cy="60" r="7"/>
+          <circle class="n n-amber" cx="30" cy="170" r="7"/>
+          <circle class="n n-plain" cx="110" cy="240" r="7"/>
+          <circle class="n n-plain" cx="140" cy="330" r="7"/>
+          <circle class="n n-false" cx="50" cy="60" r="7"/>
+          <circle class="n n-false" cx="200" cy="40" r="7"/>
+          <circle class="n n-false" cx="120" cy="110" r="9"/>
+          <circle class="n n-false" cx="300" cy="100" r="9"/>
+          <circle class="n n-true" cx="380" cy="160" r="7"/>
+          <circle class="n n-true" cx="400" cy="300" r="7"/>
+          <circle class="n n-true" cx="300" cy="330" r="7"/>
+          <circle class="n n-true" cx="230" cy="290" r="9"/>
+          <circle class="ring" cx="210" cy="180" r="14"/>
+          <circle class="n n-false n-source" cx="210" cy="180" r="11"/>
+          <circle class="n n-true n-verifier" cx="330" cy="220" r="11"/>
+          <path class="check" d="M324.5 220.5 l3.8 3.8 l7 -7.6"/>
+        </g>
+      </svg>
+      <figcaption class="legend">
+        <span><i class="sw sw-false"></i>generated / spreading</span>
+        <span><i class="sw sw-amber"></i>distorted</span>
+        <span><i class="sw sw-true"></i>verified / corrected</span>
+      </figcaption>
+    </figure>
+  </div>
+</header>
+
+<main>
+
+<section class="block" id="overview">
+  <div class="container narrow">
+    <p class="section-label">Overview</p>
+    <h2>LLM agents change what misinformation is, and give us new ways to study it</h2>
+    <div class="prose">
+      <p>A single model can fabricate a plausible claim. An agent can refine that claim against feedback, tailor it to an audience, push it through a social network, and gradually change what people believe. The same agents also give researchers a laboratory in which the spread of falsehoods, the drift of beliefs, and the effect of corrections can be simulated, measured, and stress-tested before they play out on real platforms.</p>
+      <p>This tutorial covers recent work in this area through three questions. How do agents <em>generate</em> misinformation, from unintended hallucination to goal-directed fabrication and the co-evolution of generators and detectors? How does misinformation <em>propagate</em> as LLM personas spread, distort, and polarize around content, and when can such simulations be trusted to reflect real populations? How can agents <em>intervene</em>, through evidence retrieval, multi-agent fact-checking and debate, and correction strategies, and how reliable are the verifiers themselves?</p>
+    </div>
+    <blockquote class="pull">
+      Throughout, we focus on what works, what fails, and how to tell the difference: agreement among agents does not guarantee correctness, accurate fact-checking does not always change minds, and a simulation needs validating before its conclusions are trusted.
+    </blockquote>
+    <div class="audience">
+      <div>
+        <h3>Who should attend</h3>
+        <p>Researchers, graduate students, and practitioners in NLP, information retrieval, social computing, trustworthy AI, and multi-agent systems.</p>
+      </div>
+      <div>
+        <h3>Prerequisites</h3>
+        <p>Basic familiarity with machine learning, NLP, and large language models. No prior experience with agents or social simulation is assumed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="outline">
+  <div class="container">
+    <p class="section-label">Outline</p>
+    <h2>Three parts, one pipeline</h2>
+    <ol class="parts">
+      <li class="part part-1">
+        <div class="part-head">
+          <span class="part-num">Part I</span>
+          <span class="part-time">~70 min</span>
+        </div>
+        <h3>Misinformation Generation</h3>
+        <ul>
+          <li>LLM-generated misinformation: mechanisms and methods</li>
+          <li>Goal-directed misinformation generation with agents</li>
+          <li>Adversarial co-evolution of generators and detectors</li>
+        </ul>
+        <p class="part-note">From hallucination and source distortion to agents that draft, evaluate, and revise narratives, and detectors that must keep up.</p>
+      </li>
+      <li class="part part-2">
+        <div class="part-head">
+          <span class="part-num">Part II</span>
+          <span class="part-time">~70 min</span>
+        </div>
+        <h3>Agent-Based Propagation Simulation</h3>
+        <ul>
+          <li>Modeling users, social networks, and interactions</li>
+          <li>Content evolution, belief dynamics, and polarization</li>
+          <li>Evaluation and validation of social simulations</li>
+        </ul>
+        <p class="part-note">How LLM personas pass content along, how it mutates, how beliefs shift, and how to check a simulation against real data.</p>
+      </li>
+      <li class="part part-3">
+        <div class="part-head">
+          <span class="part-num">Part III</span>
+          <span class="part-time">~70 min</span>
+        </div>
+        <h3>Agent-Based Verification and Intervention</h3>
+        <ul>
+          <li>Evidence retrieval and multi-agent fact-checking</li>
+          <li>Misinformation correction and intervention strategies</li>
+          <li>Reliability and dynamic evaluation of verification agents</li>
+        </ul>
+        <p class="part-note">Agents that retrieve evidence, debate, and write corrections, and the failure modes that make verifiers unreliable.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="schedule">
+  <div class="container narrow">
+    <p class="section-label">Schedule</p>
+    <h2>Program</h2>
+    <p class="muted">Date, room, and exact times will be posted once AAAI-27 releases the tutorial program.</p>
+    <table class="schedule">
+      <thead>
+        <tr><th scope="col">Time</th><th scope="col">Session</th><th scope="col">Presenter</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="t">TBA</td>
+          <td><span class="tag tag-1">Part I</span> Misinformation Generation</td>
+          <td>Xiuying Chen</td>
+        </tr>
+        <tr>
+          <td class="t">TBA</td>
+          <td><span class="tag tag-2">Part II</span> Agent-Based Propagation Simulation</td>
+          <td>Yuhan Liu</td>
+        </tr>
+        <tr class="break-row">
+          <td class="t">30 min</td>
+          <td colspan="2">Coffee break</td>
+        </tr>
+        <tr>
+          <td class="t">TBA</td>
+          <td><span class="tag tag-3">Part III</span> Agent-Based Verification and Intervention</td>
+          <td>Preslav Nakov, Xiangliang Zhang</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="block alt" id="presenters">
+  <div class="container">
+    <p class="section-label">Presenters</p>
+    <h2>Presenters</h2>
+    <div class="people">
+      <article class="person">
+        <img src="assets/img/people/yuhan-liu.jpg" alt="Yuhan Liu" loading="lazy">
+        <div>
+          <h3>Yuhan Liu</h3>
+          <p class="role">Postdoctoral Researcher, MBZUAI</p>
+          <p>Ph.D., Renmin University of China (2025). Works on agentic AI for a trustworthy information ecosystem, spanning misinformation, LLM agents, and multimodal content, with papers at ACL, EMNLP, IJCAI, SIGIR, NeurIPS, and ICLR. DAAD AInet Fellow and ACL/EMNLP Area Chair.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar" aria-hidden="true">XC</div>
+        <div>
+          <h3>Xiuying Chen</h3>
+          <p class="role">Assistant Professor, MBZUAI</p>
+          <p>Ph.D., KAUST (2024). Leads the HALO Lab on trustworthy language models, publishing at ACL, ICML, NeurIPS, and ICLR. Recipient of an Amazon Research Award and MBZUAI's Rising Star Award; Area Chair for AAAI, ACL, EMNLP, NeurIPS, and KDD.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar" aria-hidden="true">PN</div>
+        <div>
+          <h3>Preslav Nakov</h3>
+          <p class="role">Professor and NLP Program Director, MBZUAI</p>
+          <p>Ph.D., UC Berkeley. Works on disinformation, propaganda, fact-checking, and machine-generated content detection. First recipient of Bulgaria's John Atanasoff Presidential Award, Program Co-Chair of ACL 2022, and Action Editor of TACL.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="avatar" aria-hidden="true">XZ</div>
+        <div>
+          <h3>Xiangliang Zhang</h3>
+          <p class="role">Leonard C. Bettex Collegiate Professor, University of Notre Dame</p>
+          <p>Research on trustworthy AI, from foundation models to agentic systems. Editor-in-Chief of ACM SIGKDD Explorations and Information Sciences, and Research Track Program Co-Chair of KDD 2026.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="reading">
+  <div class="container narrow">
+    <p class="section-label">Reading list</p>
+    <h2>Selected references</h2>
+    <p class="muted">Grouped by tutorial part. <span class="mine-key">Highlighted</span> entries include one or more presenters.</p>
+
+    <h3 class="rl-head"><span class="tag tag-1">Part I</span> Generation</h3>
+    <ol class="refs">
+      <li class="mine">Wang, Y.; Wang, M.; Manzoor, M. A.; et al. <cite>Factuality of Large Language Models: A Survey.</cite> EMNLP 2024.</li>
+      <li class="mine">Chen, X.; Li, M.; Gao, X.; Zhang, X. <cite>Towards Improving Faithfulness in Abstractive Summarization.</cite> NeurIPS 2022.</li>
+      <li class="mine">Pan, Y.; Pan, L.; Chen, W.; Nakov, P.; Kan, M.-Y.; Wang, W. Y. <cite>On the Risk of Misinformation Pollution with Large Language Models.</cite> Findings of EMNLP 2023.</li>
+      <li class="mine">Guo, M.; Chen, X.; Li, J.; Zhao, D.; Yan, R. <cite>How does Truth Evolve into Fake News? An Empirical Study of Fake News Evolution.</cite> WWW Companion 2021.</li>
+      <li class="mine">Liu, Y.; Song, Z.; Zhang, J.; Zhang, X.; Chen, X.; Yan, R. <cite>The Stepwise Deception: Simulating the Evolution from True News to Fake News with LLM Agents.</cite> EMNLP 2025.</li>
+      <li class="mine">Hou, D. X.; Zhang, J.; Gu, X.; et al. <cite>Detecting AI-Generated Video: A Vision–Language Dual-View Survey.</cite> Findings of ACL 2026.</li>
+      <li class="mine">Tian, C.; Ho, Q.; Chen, X. <cite>A Symbolic Adversarial Learning Framework for Evolving Fake News Generation and Detection.</cite> EMNLP 2025.</li>
+      <li class="mine">Gao, L.; Li, X.; Wang, C.; et al. <cite>When Personalization Tricks Detectors: The Feature-Inversion Trap in Machine-Generated Text Detection.</cite> ACL 2026.</li>
+      <li class="mine">Wang, Y.; et al. <cite>M4GT-Bench: Evaluation Benchmark for Black-Box Machine-Generated Text Detection.</cite> ACL 2024.</li>
+      <li class="mine">Gu, T.; Wang, Z.; Huang, K.; Yao, Y.; Zhang, X.; Yang, Y.; Chen, X. <cite>Invisible Entropy: Towards Safe and Efficient Low-Entropy LLM Watermarking.</cite> EMNLP 2025.</li>
+    </ol>
+
+    <h3 class="rl-head"><span class="tag tag-2">Part II</span> Propagation</h3>
+    <ol class="refs">
+      <li>Park, J. S.; O'Brien, J. C.; Cai, C. J.; et al. <cite>Generative Agents: Interactive Simulacra of Human Behavior.</cite> UIST 2023.</li>
+      <li class="mine">Guo, T.; Chen, X.; Wang, Y.; et al. <cite>Large Language Model Based Multi-Agents: A Survey of Progress and Challenges.</cite> IJCAI 2024.</li>
+      <li class="mine">Liu, Y.; Chen, X.; Zhang, X.; Gao, X.; Zhang, J.; Yan, R. <cite>From Skepticism to Acceptance: Simulating the Attitude Dynamics Toward Fake News.</cite> IJCAI 2024.</li>
+      <li class="mine">Wang, C.; Liu, Z.; Yang, D.; Chen, X. <cite>Decoding Echo Chambers: LLM-Powered Simulations Revealing Polarization in Social Networks.</cite> COLING 2025.</li>
+      <li class="mine">Jiang, Y.; Wang, W.; Huang, Y.; et al. <cite>RiskLab: A Controlled Toolkit for Probing Emergent Risks in LLM-Based Multi-Agent Systems.</cite> ACL 2026 System Demonstrations.</li>
+      <li>Puelma Touzel, M.; et al. <cite>Position: Time to Close The Validation Gap in LLM Social Simulations.</cite> ICML 2026.</li>
+    </ol>
+
+    <h3 class="rl-head"><span class="tag tag-3">Part III</span> Verification and intervention</h3>
+    <ol class="refs">
+      <li>Thorne, J.; Vlachos, A.; Christodoulopoulos, C.; Mittal, A. <cite>FEVER: A Large-Scale Dataset for Fact Extraction and VERification.</cite> NAACL-HLT 2018.</li>
+      <li class="mine">Iqbal, H.; Wang, Y.; Wang, M.; et al. <cite>OpenFactCheck: A Unified Framework for Factuality Evaluation of LLMs.</cite> EMNLP 2024 Demos.</li>
+      <li class="mine">Baly, R.; Karadzhov, G.; Alexandrov, D.; Glass, J.; Nakov, P. <cite>Predicting Factuality of Reporting and Bias of News Media Sources.</cite> EMNLP 2018.</li>
+      <li class="mine">Liu, Y.; Liu, Y.; Zhang, X.; Chen, X.; Yan, R. <cite>The Truth Becomes Clearer Through Debate! Multi-Agent Systems with Large Language Models Unmask Fake News.</cite> SIGIR 2025.</li>
+      <li class="mine">Wu, J.; Fu, Z.; Wang, H.; Li, F.; Guo, J.; Nakov, P.; Kan, M.-Y. <cite>Beyond the Crowd: LLM-Augmented Community Notes for Governing Health Misinformation.</cite> ACL 2026.</li>
+      <li>Pennycook, G.; Rand, D. G. <cite>Accuracy Prompts Are a Replicable and Generalizable Approach for Reducing the Spread of Misinformation.</cite> Nature Communications 13:2333, 2022.</li>
+      <li class="mine">Li, D.; Sun, R.; Huang, Y.; et al. <cite>Preference Leakage: A Contamination Problem in LLM-as-a-Judge.</cite> ICLR 2026.</li>
+      <li class="mine">Huang, Y.; Hua, H.; Zhou, Y.; et al. <cite>Building a Foundational Guardrail for General Agentic Systems via Synthetic Data.</cite> ICLR 2026.</li>
+      <li class="mine">Wang, Y.; Ye, J.; Wu, S.; et al. <cite>TRUSTEVAL: A Dynamic Evaluation Toolkit on Trustworthiness of Generative Foundation Models.</cite> NAACL 2025 System Demonstrations.</li>
+      <li class="mine">Huang, Y.; Gao, C.; Wu, S.; et al. <cite>TrustGen: A Platform of Dynamic Benchmarking on the Trustworthiness of Generative Foundation Models.</cite> ICLR 2026.</li>
+      <li class="mine">Vashurin, R.; et al. <cite>Benchmarking Uncertainty Quantification Methods for LLMs with LM-Polygraph.</cite> TACL 13, 2025.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="block alt" id="materials">
+  <div class="container narrow">
+    <p class="section-label">Materials</p>
+    <h2>Slides and resources</h2>
+    <div class="materials">
+      <div class="mat">
+        <h3>Slides</h3>
+        <p>Available after the tutorial.</p>
+        <span class="status">Coming soon</span>
+      </div>
+      <div class="mat">
+        <h3>Recording</h3>
+        <p>Posted here if the session is recorded.</p>
+        <span class="status">Coming soon</span>
+      </div>
+      <div class="mat">
+        <h3>Reading list</h3>
+        <p>27 papers grouped by tutorial part.</p>
+        <a class="status status-live" href="#reading">View list</a>
+      </div>
+    </div>
+
+    <h3 class="cite-head">Cite this tutorial</h3>
+    <div class="bibtex">
+      <button class="copy-btn" type="button" data-copy="#bibtex">Copy</button>
+<pre id="bibtex"><code>@misc{liu2027misinfoagents,
+  title  = {Misinformation in the Age of LLM Agents:
+            Generation, Propagation, and Intervention},
+  author = {Liu, Yuhan and Chen, Xiuying and Nakov, Preslav
+            and Zhang, Xiangliang},
+  note   = {Tutorial at the AAAI Conference on Artificial
+            Intelligence (AAAI-27)},
+  year   = {2027}
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>Questions about the tutorial? Contact <a href="mailto:yuhan.liu@mbzuai.ac.ae">yuhan.liu@mbzuai.ac.ae</a>.</p>
+    <p class="muted">MBZUAI · University of Notre Dame · AAAI-27</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
