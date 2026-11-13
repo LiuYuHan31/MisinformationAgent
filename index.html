@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="css/style.css?v=20261114-4">
+  <link rel="stylesheet" href="css/style.css?v=20261114-6">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
       <li><a href="#overview">Overview</a></li>
       <li><a href="#outline">Outline</a></li>
       <li><a href="#schedule">Schedule</a></li>
-      <li><a href="#presenters">Presenters</a></li>
+      <li><a href="#organizers">Organizers</a></li>
       <li><a href="#reading">Reading list</a></li>
       <li><a href="#materials">Materials</a></li>
     </ul>
@@ -44,23 +44,23 @@
       </p>
     </div>
 
-    <ul class="speakers" aria-label="Presenters">
-      <li><a class="speaker" href="#presenters">
+    <ul class="speakers" aria-label="Organizers">
+      <li><a class="speaker" href="#organizers">
         <img src="assets/img/people/yuhan-liu.jpg" alt="">
         <h3>Yuhan Liu</h3>
         <p>MBZUAI</p>
       </a></li>
-      <li><a class="speaker" href="#presenters">
+      <li><a class="speaker" href="#organizers">
         <img src="assets/img/people/xiuying-chen.jpg" alt="">
         <h3>Xiuying Chen</h3>
         <p>MBZUAI</p>
       </a></li>
-      <li><a class="speaker" href="#presenters">
+      <li><a class="speaker" href="#organizers">
         <img src="assets/img/people/preslav-nakov.jpg" alt="">
         <h3>Preslav Nakov</h3>
         <p>MBZUAI</p>
       </a></li>
-      <li><a class="speaker" href="#presenters">
+      <li><a class="speaker" href="#organizers">
         <img src="assets/img/people/xiangliang-zhang.jpg" alt="">
         <h3>Xiangliang Zhang</h3>
         <p>University of Notre Dame</p>
@@ -92,11 +92,13 @@
     <h2>LLM agents change what misinformation is, and give us new ways to study it</h2>
     <div class="prose">
       <p>A single model can fabricate a plausible claim. An agent can refine that claim against feedback, tailor it to an audience, push it through a social network, and gradually change what people believe. The same agents also give researchers a laboratory in which the spread of falsehoods, the drift of beliefs, and the effect of corrections can be simulated, measured, and stress-tested before they play out on real platforms.</p>
-      <p>This tutorial covers recent work in this area through three questions. How do agents <em>generate</em> misinformation, from unintended hallucination to goal-directed fabrication and the co-evolution of generators and detectors? How does misinformation <em>propagate</em> as LLM personas spread, distort, and polarize around content, and when can such simulations be trusted to reflect real populations? How can agents <em>intervene</em>, through evidence retrieval, multi-agent fact-checking and debate, and correction strategies, and how reliable are the verifiers themselves?</p>
+      <p>This tutorial covers recent work in this area through three questions:</p>
+      <ol class="questions">
+        <li class="q-1">How do agents <em>generate</em> misinformation, from unintended hallucination to goal-directed fabrication and the co-evolution of generators and detectors?</li>
+        <li class="q-2">How does misinformation <em>propagate</em> as LLM personas spread, distort, and polarize around content, and when can such simulations be trusted to reflect real populations?</li>
+        <li class="q-3">How can agents <em>intervene</em>, through evidence retrieval, multi-agent fact-checking and debate, and correction strategies, and how reliable are the verifiers themselves?</li>
+      </ol>
     </div>
-    <blockquote class="pull">
-      Throughout, we focus on what works, what fails, and how to tell the difference: agreement among agents does not guarantee correctness, accurate fact-checking does not always change minds, and a simulation needs validating before its conclusions are trusted.
-    </blockquote>
     <div class="audience">
       <div>
         <h3>Who should attend</h3>
@@ -113,7 +115,6 @@
 <section class="block alt" id="outline">
   <div class="container">
     <p class="section-label">Outline</p>
-    <h2>Three parts, one pipeline</h2>
     <ol class="parts">
       <li class="part part-1">
         <div class="part-head">
@@ -165,37 +166,34 @@
     <p class="muted">Room and exact times will be posted once AAAI-27 releases the tutorial program.</p>
     <table class="schedule">
       <thead>
-        <tr><th scope="col">Time</th><th scope="col">Session</th><th scope="col">Presenter</th></tr>
+        <tr><th scope="col">Time</th><th scope="col">Session</th></tr>
       </thead>
       <tbody>
         <tr>
           <td class="t">TBD</td>
           <td><span class="tag tag-1">Part I</span> Misinformation Generation</td>
-          <td>Xiuying Chen</td>
         </tr>
         <tr>
           <td class="t">TBD</td>
           <td><span class="tag tag-2">Part II</span> Agent-Based Propagation Simulation</td>
-          <td>Yuhan Liu</td>
         </tr>
         <tr class="break-row">
           <td class="t">30 min</td>
-          <td colspan="2">Coffee break</td>
+          <td>Coffee break</td>
         </tr>
         <tr>
           <td class="t">TBD</td>
           <td><span class="tag tag-3">Part III</span> Agent-Based Verification and Intervention</td>
-          <td>Preslav Nakov, Xiangliang Zhang</td>
         </tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<section class="block alt" id="presenters">
+<section class="block alt" id="organizers">
   <div class="container">
-    <p class="section-label">Presenters</p>
-    <h2>Presenters</h2>
+    <p class="section-label">Organizers</p>
+    <h2>Organizers</h2>
     <div class="people">
       <article class="person">
         <img src="assets/img/people/yuhan-liu.jpg" alt="Yuhan Liu" loading="lazy">
@@ -237,7 +235,7 @@
   <div class="container narrow">
     <p class="section-label">Reading list</p>
     <h2>Selected references</h2>
-    <p class="muted">Grouped by tutorial part.</p>
+    <p class="muted">Grouped by tutorial part. This list is still a work in progress; the final version will be posted here.</p>
 
     <h3 class="rl-head"><span class="tag tag-1">Part I</span> Generation</h3>
     <ol class="refs">
