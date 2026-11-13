@@ -13,13 +13,13 @@
   --muted: #64748b;
   --rule: #e2e8f0;
 
-  /* Tutorial parts: an analogous violet → indigo → azure progression */
-  --p1: #6d4bc9;         /* Part I · Generation */
+  /* Tutorial parts: berry, indigo, deep cyan — jewel tones that sit well on slate */
+  --p1: #a8327a;         /* Part I · Generation */
   --p2: #4354cf;         /* Part II · Propagation */
-  --p3: #1170a0;         /* Part III · Intervention */
-  --p1-tint: #efebf9;
-  --p2-tint: #eaecfa;
-  --p3-tint: #e5eff5;
+  --p3: #0a7183;         /* Part III · Intervention */
+  --p1-tint: #f6eaf2;
+  --p2-tint: #eceefa;
+  --p3-tint: #e6f1f3;
 
   --accent: #4f46e5;
   --focus: #4f46e5;
@@ -45,12 +45,12 @@
     --muted: #94a3b8;
     --rule: #334155;
 
-    --p1: #ab94f5;
+    --p1: #ec8cc6;
     --p2: #8e9cf7;
-    --p3: #62bde0;
-    --p1-tint: #282b4a;
+    --p3: #5cc6d6;
+    --p1-tint: #322a43;
     --p2-tint: #232c4b;
-    --p3-tint: #1c3247;
+    --p3-tint: #1b3346;
 
     --accent: #a5b4fc;
     --focus: #a5b4fc;
@@ -89,7 +89,7 @@ p { margin: 0 0 1em; }
 /* ---------- Nav + Hero ----------
    Dark header styled after the NeurIPS 2025 Human-AI Alignment tutorial page:
    slate-900 → slate-800 gradient, Inter, indigo accents, amber links, glass cards. */
-.site-nav, .hero {
+.site-nav, .hero, .cta, .site-footer {
   --h-bg-0: #0f172a;            /* slate-900 */
   --h-bg-1: #1e293b;            /* slate-800 */
   --h-text: #e5e7eb;            /* gray-200 */
@@ -202,7 +202,7 @@ p { margin: 0 0 1em; }
 @media (prefers-reduced-motion: reduce) { .speaker { transition: none; } .speaker:hover { transform: none; } }
 
 /* ---------- Sections ---------- */
-.block { padding: 88px 0; }
+.block { padding: 60px 0; }
 .block.alt { background: var(--paper-alt); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .section-label {
   font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase;
@@ -256,6 +256,8 @@ p { margin: 0 0 1em; }
 }
 .schedule td { padding: 14px 12px 14px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
 .schedule td.t { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); white-space: nowrap; width: 90px; }
+.schedule .len { text-align: right; padding-right: 0; white-space: nowrap; width: 90px; }
+.schedule td.len { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); }
 .break-row td { color: var(--muted); font-style: italic; background: repeating-linear-gradient(-45deg, transparent 0 6px, var(--paper-alt) 6px 12px); }
 
 .tag {
@@ -327,7 +329,44 @@ p { margin: 0 0 1em; }
 .copy-btn:hover { border-color: var(--ink); }
 
 /* Footer */
-.site-footer { padding: 40px 0; border-top: 1px solid var(--rule); font-size: 0.9rem; }
+/* Call to action (styled after the reference tutorial page) */
+.cta {
+  text-align: center; color: var(--h-text);
+  background-color: var(--h-bg-0);
+  background-image:
+    radial-gradient(ellipse 55% 90% at 50% 0%, rgb(99 102 241 / 0.20), transparent 70%),
+    linear-gradient(145deg, var(--h-bg-0) 0%, var(--h-bg-1) 100%);
+  padding: 72px 0;
+}
+.cta h2 {
+  margin: 0 0 20px; font-family: "Inter", var(--sans); font-weight: 700;
+  font-size: 1.875rem; line-height: 2.25rem; letter-spacing: normal; color: var(--h-white);
+}
+.cta p { max-width: 42rem; margin: 0 auto 32px; font-size: 1.125rem; line-height: 1.75rem; color: var(--h-text-soft); }
+.cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 16px; }
+.cta-btn {
+  display: inline-block; padding: 12px 32px; border-radius: 8px; border: 1px solid transparent;
+  font-size: 1.125rem; font-weight: 600; text-decoration: none;
+  transition: background-color .3s, border-color .3s, color .3s, transform .3s;
+}
+.cta-btn-primary {
+  background: #4f46e5; color: var(--h-white);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+}
+.cta-btn-primary:hover { background: #6366f1; color: var(--h-white); transform: translateY(-2px); }
+.cta-btn-ghost { color: var(--h-text); border-color: var(--h-slate-600); }
+.cta-btn-ghost:hover { color: var(--h-white); border-color: var(--h-indigo-300); transform: translateY(-2px); }
+.cta :focus-visible, .site-footer :focus-visible { outline-color: var(--h-indigo-300); }
+@media (prefers-reduced-motion: reduce) { .cta-btn:hover { transform: none; } }
+
+/* Footer: continues the dark CTA band */
+.site-footer {
+  padding: 32px 0; font-size: 0.9rem; color: #9ca3af;
+  background: var(--h-bg-1); border-top: 1px solid var(--h-card-border);
+}
+.site-footer a { color: var(--h-indigo-300); text-decoration-color: currentColor; }
+.site-footer a:hover { color: var(--h-white); }
+.site-footer .muted { color: #9ca3af; }
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
 .footer-inner p { margin: 0; }
 
@@ -349,7 +388,11 @@ p { margin: 0 0 1em; }
   .nav-inner { justify-content: flex-end; }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 12px 8px; }
-  .block { padding: 64px 0; }
+  .block { padding: 44px 0; }
+  .cta { padding: 56px 0; }
+  .cta h2 { font-size: 1.5rem; line-height: 2rem; }
+  .schedule td.t { width: 52px; }
+  .schedule .len { width: 64px; }
   .audience, .materials { grid-template-columns: 1fr; }
   .person { grid-template-columns: 64px 1fr; gap: 16px; padding: 18px; }
   .person img, .avatar { width: 64px; height: 64px; font-size: 1.2rem; }
