@@ -45,4 +45,39 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
+
+  // Collapse long author lists: <span class="authors" data-show="N">A, B, ..., Z.</span>
+  document.querySelectorAll('.authors[data-show]').forEach(function (el) {
+    var show = parseInt(el.getAttribute('data-show'), 10);
+    var names = el.textContent.trim().replace(/\.$/, '').split(/,\s*/);
+    if (!show || names.length <= show + 2) return;
+
+    var rest = document.createElement('span');
+    rest.className = 'authors-rest';
+    rest.hidden = true;
+    rest.textContent = ', ' + names.slice(show).join(', ') + '.';
+
+    var etal = document.createElement('span');
+    etal.textContent = ', et al.';
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'authors-toggle';
+    btn.setAttribute('aria-expanded', 'false');
+    var collapsedLabel = 'Show all ' + names.length + ' authors';
+    btn.textContent = collapsedLabel;
+    btn.addEventListener('click', function () {
+      var open = rest.hidden;
+      rest.hidden = !open;
+      etal.hidden = open;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? 'Show fewer' : collapsedLabel;
+    });
+
+    el.textContent = names.slice(0, show).join(', ');
+    el.appendChild(rest);
+    el.appendChild(etal);
+    el.appendChild(document.createTextNode(' '));
+    el.appendChild(btn);
+  });
 });
