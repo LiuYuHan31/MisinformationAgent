@@ -134,6 +134,7 @@ p { margin: 0 0 1em; }
   color: var(--h-indigo-400); text-decoration: none; transition: color .2s;
 }
 .hero-venue:hover { color: var(--h-indigo-300); }
+.hero-venue .sep { margin: 0 0.35em; opacity: 0.55; font-weight: 400; }
 .hero h1 {
   margin-top: 12px; font-family: "Inter", var(--sans); font-weight: 800;
   font-size: clamp(1.875rem, 3.9vw, 2.75rem); line-height: 1.25; color: var(--h-white);
