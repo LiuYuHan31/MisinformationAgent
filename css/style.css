@@ -121,7 +121,12 @@ p { margin: 0 0 1em; }
 }
 .nav-logo:hover { color: var(--h-indigo-300); }
 .nav-logo img { display: block; height: 30px; width: auto; }
-.nav-logo-text { white-space: nowrap; }
+.nav-logo-text { display: flex; flex-direction: column; gap: 2px; white-space: nowrap; line-height: 1.25; }
+.nav-logo-meta {
+  font-size: 0.66rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--h-text-soft);
+}
+.nav-logo:hover .nav-logo-meta { color: var(--h-indigo-300); }
 .nav-links { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
 .nav-links a {
   display: block; padding: 6px 10px; font-size: 0.9rem; color: var(--h-text-soft);
@@ -256,10 +261,8 @@ p { margin: 0 0 1em; }
 .part-note { margin: auto 0 0; font-size: 0.9rem; color: var(--muted); }
 
 /* Schedule */
-/* Program: centered block, table sized to its content */
-.center { text-align: center; }
-.center .section-label { justify-content: center; }
-.schedule { width: auto; min-width: min(100%, 600px); margin: 16px auto 0; border-collapse: collapse; font-size: 0.96rem; text-align: left; }
+/* Program: left-aligned like the other sections; table sized to its content */
+.schedule { width: auto; min-width: min(100%, 600px); margin-top: 16px; border-collapse: collapse; font-size: 0.96rem; text-align: left; }
 .schedule th {
   text-align: left; font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
@@ -399,6 +402,7 @@ p { margin: 0 0 1em; }
   .nav-toggle { display: flex; }
   .nav-logo { flex: 1 1 auto; min-width: 0; font-size: 0.875rem; }
   .nav-logo-text { white-space: normal; line-height: 1.3; }
+  .nav-logo-meta { display: none; }
   .nav-links {
     display: none; position: absolute; top: 60px; left: 0; right: 0;
     flex-direction: column; gap: 0; padding: 8px 16px 16px;
