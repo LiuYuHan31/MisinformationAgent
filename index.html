@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MisinfoAgents · AAAI-27 Tutorial TH01</title>
+  <!-- English by default; ?lang=zh opens the Chinese version (set before first paint) -->
+  <script>if (/[?&]lang=zh(&|$)/.test(location.search)) { document.documentElement.classList.add('zh'); document.documentElement.lang = 'zh-CN'; }</script>
   <meta name="description" content="AAAI-27 half-day tutorial on how LLM agents generate, propagate, and intervene on misinformation.">
   <meta property="og:title" content="Misinformation in the Age of LLM Agents: Generation, Propagation, and Intervention">
   <meta property="og:description" content="AAAI-27 half-day tutorial by Yuhan Liu, Xiuying Chen, Preslav Nakov, and Xiangliang Zhang.">
@@ -14,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261114-21">
+  <link rel="stylesheet" href="css/style.css?v=20261114-24">
 </head>
 <body>
 
@@ -22,19 +24,23 @@
   <div class="container nav-inner">
     <a class="nav-logo" href="https://aaai.org/conference/aaai/aaai-27/" target="_blank" rel="noopener" aria-label="The 41st Annual AAAI Conference on Artificial Intelligence (AAAI-27)">
       <img src="assets/img/aaai27-logo-white.png" alt="" width="32" height="30">
-      <span class="nav-logo-text"><span class="nav-logo-name">The 41st Annual AAAI Conference on Artificial Intelligence</span><span class="nav-logo-meta">February 16 – February 23, 2027 | Montréal, Canada</span></span>
+      <span class="nav-logo-text"><span class="nav-logo-name">The 41st Annual AAAI Conference on Artificial Intelligence</span><span class="nav-logo-meta"><span data-l="en">February 16 – February 23, 2027 | Montréal, Canada</span><span data-l="zh" lang="zh-CN">2027 年 2 月 16 日至 23 日 | 加拿大蒙特利尔</span></span></span>
     </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#overview"><span data-l="en">Overview</span><span data-l="zh" lang="zh-CN">概览</span></a></li>
+      <li><a href="#outline"><span data-l="en">Outline</span><span data-l="zh" lang="zh-CN">大纲</span></a></li>
+      <li><a href="#schedule"><span data-l="en">Schedule</span><span data-l="zh" lang="zh-CN">日程</span></a></li>
+      <li><a href="#organizers"><span data-l="en">Organizers</span><span data-l="zh" lang="zh-CN">组织者</span></a></li>
+      <li><a href="#reading"><span data-l="en">Reading list</span><span data-l="zh" lang="zh-CN">阅读清单</span></a></li>
+      <li><a href="#materials"><span data-l="en">Materials</span><span data-l="zh" lang="zh-CN">资料</span></a></li>
+    </ul>
+    <button class="nav-lang" type="button" aria-label="切换到中文 (Switch to Chinese)">
+      <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg>
+      <span data-l="en" lang="zh-CN">中文</span><span data-l="zh" lang="en">EN</span>
+    </button>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
       <span></span><span></span><span></span>
     </button>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#outline">Outline</a></li>
-      <li><a href="#schedule">Schedule</a></li>
-      <li><a href="#organizers">Organizers</a></li>
-      <li><a href="#reading">Reading list</a></li>
-      <li><a href="#materials">Materials</a></li>
-    </ul>
   </div>
 </nav>
 
@@ -43,6 +49,7 @@
     <div class="hero-head">
       <a class="hero-venue" href="https://aaai.org/conference/aaai/aaai-27/tutorial-and-lab-forum/#th01" target="_blank" rel="noopener">AAAI-27 Tutorial <span class="sep" aria-hidden="true">|</span> TH01</a>
       <h1><span>Misinformation in the Age of LLM&nbsp;Agents:</span> <span>Generation, Propagation, and&nbsp;Intervention</span></h1>
+      <p class="hero-zh" data-l="zh" lang="zh-CN"><span class="nw">LLM 智能体时代的虚假信息：</span><span class="nw">生成、传播与干预</span></p>
     </div>
 
     <ul class="speakers" aria-label="Organizers">
@@ -71,15 +78,15 @@
     <div class="details">
       <div class="detail">
         <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
-        <div><h3>Date</h3><p>Tuesday, 16 February 2027</p></div>
+        <div><h3><span data-l="en">Date</span><span data-l="zh" lang="zh-CN">日期</span></h3><p><span data-l="en">Tuesday, 16 February 2027</span><span data-l="zh" lang="zh-CN">2027 年 2 月 16 日（周二）</span></p></div>
       </div>
       <div class="detail">
         <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-        <div><h3>Time</h3><p>TBD</p></div>
+        <div><h3><span data-l="en">Time</span><span data-l="zh" lang="zh-CN">时间</span></h3><p><span data-l="en">TBD</span><span data-l="zh" lang="zh-CN">待定</span></p></div>
       </div>
       <div class="detail">
         <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-        <div><h3>Location</h3><p>Montréal, Canada</p></div>
+        <div><h3><span data-l="en">Location</span><span data-l="zh" lang="zh-CN">地点</span></h3><p><span data-l="en">Montréal, Canada</span><span data-l="zh" lang="zh-CN">加拿大蒙特利尔</span></p></div>
       </div>
     </div>
   </div>
@@ -89,25 +96,25 @@
 
 <section class="block" id="overview">
   <div class="container narrow">
-    <p class="section-label">Overview</p>
-    <h2>LLM agents change what misinformation is, and give us new ways to study it</h2>
+    <p class="section-label"><span data-l="en">Overview</span><span data-l="zh" lang="zh-CN">概览</span></p>
+    <h2><span data-l="en">LLM agents change what misinformation is, and give us new ways to study it</span><span data-l="zh" lang="zh-CN"><span class="nw">LLM 智能体改变了虚假信息的面貌，</span><span class="nw">也为研究它提供了新方法</span></span></h2>
     <div class="prose">
-      <p>A single model can fabricate a plausible claim. An agent can refine that claim against feedback, tailor it to an audience, push it through a social network, and gradually change what people believe. The same agents also give researchers a laboratory in which the spread of falsehoods, the drift of beliefs, and the effect of corrections can be simulated, measured, and stress-tested before they play out on real platforms.</p>
-      <p>This tutorial covers recent work in this area through three questions:</p>
+      <p><span data-l="en">A single model can fabricate a plausible claim. An agent can refine that claim against feedback, tailor it to an audience, push it through a social network, and gradually change what people believe. The same agents also give researchers a laboratory in which the spread of falsehoods, the drift of beliefs, and the effect of corrections can be simulated, measured, and stress-tested before they play out on real platforms.</span><span data-l="zh" lang="zh-CN">单个模型就能编造出一条看似可信的说法；智能体则更进一步：它能根据反馈反复打磨这条说法，针对不同受众调整措辞，再借助社交网络扩散出去，一点点改变人们的看法。另一方面，这些智能体也为研究者提供了一个实验场：在虚假信息真正在平台上蔓延之前，就可以先对它的传播、观点的变化以及纠正措施的效果进行模拟、测量和压力测试。</span></p>
+      <p><span data-l="en">This tutorial covers recent work in this area through three questions:</span><span data-l="zh" lang="zh-CN">本次 Tutorial 围绕三个问题，介绍这一方向的最新研究：</span></p>
       <ol class="questions">
-        <li class="q-1">How do agents <em>generate</em> misinformation, from unintended hallucination to goal-directed fabrication and the co-evolution of generators and detectors?</li>
-        <li class="q-2">How does misinformation <em>propagate</em> as LLM personas spread, distort, and polarize around content, and when can such simulations be trusted to reflect real populations?</li>
-        <li class="q-3">How can agents <em>intervene</em>, through evidence retrieval, multi-agent fact-checking and debate, and correction strategies, and how reliable are the verifiers themselves?</li>
+        <li class="q-1"><span data-l="en">How do agents <em>generate</em> misinformation, from unintended hallucination to goal-directed fabrication and the co-evolution of generators and detectors?</span><span data-l="zh" lang="zh-CN">智能体如何<em>生成</em>虚假信息？从无意中产生的幻觉，到有目的的编造，再到生成器与检测器在对抗中的共同演化。</span></li>
+        <li class="q-2"><span data-l="en">How does misinformation <em>propagate</em> as LLM personas spread, distort, and polarize around content, and when can such simulations be trusted to reflect real populations?</span><span data-l="zh" lang="zh-CN">虚假信息如何<em>传播</em>？由 LLM 扮演的用户会转发、歪曲内容，观点也会随之两极分化；这类模拟在什么情况下才能可信地反映真实人群？</span></li>
+        <li class="q-3"><span data-l="en">How can agents <em>intervene</em>, through evidence retrieval, multi-agent fact-checking and debate, and correction strategies, and how reliable are the verifiers themselves?</span><span data-l="zh" lang="zh-CN">智能体如何<em>干预</em>虚假信息？手段包括证据检索、多智能体事实核查与辩论、纠正策略等；而负责核查的智能体本身又有多可靠？</span></li>
       </ol>
     </div>
     <div class="audience">
       <div>
-        <h3>Who should attend</h3>
-        <p>Researchers, graduate students, and practitioners in NLP, information retrieval, social computing, trustworthy AI, and multi-agent systems.</p>
+        <h3><span data-l="en">Who should attend</span><span data-l="zh" lang="zh-CN">适合人群</span></h3>
+        <p><span data-l="en">Researchers, graduate students, and practitioners in NLP, information retrieval, social computing, trustworthy AI, and multi-agent systems.</span><span data-l="zh" lang="zh-CN">自然语言处理、信息检索、社会计算、可信 AI 和多智能体系统等方向的研究者、研究生和从业者。</span></p>
       </div>
       <div>
-        <h3>Prerequisites</h3>
-        <p>Basic familiarity with machine learning, NLP, and large language models. No prior experience with agents or social simulation is assumed.</p>
+        <h3><span data-l="en">Prerequisites</span><span data-l="zh" lang="zh-CN">预备知识</span></h3>
+        <p><span data-l="en">Basic familiarity with machine learning, NLP, and large language models. No prior experience with agents or social simulation is assumed.</span><span data-l="zh" lang="zh-CN">具备机器学习、自然语言处理和大语言模型的基础知识即可，不要求有智能体或社会模拟方面的经验。</span></p>
       </div>
     </div>
   </div>
@@ -115,46 +122,46 @@
 
 <section class="block alt" id="outline">
   <div class="container">
-    <p class="section-label">Outline</p>
+    <p class="section-label"><span data-l="en">Outline</span><span data-l="zh" lang="zh-CN">大纲</span></p>
     <ol class="parts">
       <li class="part part-1">
         <div class="part-head">
-          <span class="part-num">Part I</span>
-          <span class="part-time">~70 min</span>
+          <span class="part-num"><span data-l="en">Part I</span><span data-l="zh" lang="zh-CN">第一部分</span></span>
+          <span class="part-time"><span data-l="en">~70 min</span><span data-l="zh" lang="zh-CN">约 70 分钟</span></span>
         </div>
-        <h3>Misinformation Generation</h3>
+        <h3><span data-l="en">Misinformation Generation</span><span data-l="zh" lang="zh-CN">虚假信息的生成</span></h3>
         <ul>
-          <li>LLM-generated misinformation: mechanisms and methods</li>
-          <li>Goal-directed misinformation generation with agents</li>
-          <li>Adversarial co-evolution of generators and detectors</li>
+          <li><span data-l="en">LLM-generated misinformation: mechanisms and methods</span><span data-l="zh" lang="zh-CN">LLM 生成虚假信息的机制与方法</span></li>
+          <li><span data-l="en">Goal-directed misinformation generation with agents</span><span data-l="zh" lang="zh-CN">基于智能体的目标导向型虚假信息生成</span></li>
+          <li><span data-l="en">Adversarial co-evolution of generators and detectors</span><span data-l="zh" lang="zh-CN">生成器与检测器的对抗式共同演化</span></li>
         </ul>
-        <p class="part-note">From hallucination and source distortion to agents that draft, evaluate, and revise narratives, and detectors that must keep up.</p>
+        <p class="part-note"><span data-l="en">From hallucination and source distortion to agents that draft, evaluate, and revise narratives, and detectors that must keep up.</span><span data-l="zh" lang="zh-CN">从幻觉与信源歪曲，到能够起草、评估并修改叙事的智能体，以及需要随之升级的检测器。</span></p>
       </li>
       <li class="part part-2">
         <div class="part-head">
-          <span class="part-num">Part II</span>
-          <span class="part-time">~70 min</span>
+          <span class="part-num"><span data-l="en">Part II</span><span data-l="zh" lang="zh-CN">第二部分</span></span>
+          <span class="part-time"><span data-l="en">~70 min</span><span data-l="zh" lang="zh-CN">约 70 分钟</span></span>
         </div>
-        <h3>Agent-Based Propagation Simulation</h3>
+        <h3><span data-l="en">Agent-Based Propagation Simulation</span><span data-l="zh" lang="zh-CN">基于智能体的传播模拟</span></h3>
         <ul>
-          <li>Modeling users, social networks, and interactions</li>
-          <li>Content evolution, belief dynamics, and polarization</li>
-          <li>Evaluation and validation of social simulations</li>
+          <li><span data-l="en">Modeling users, social networks, and interactions</span><span data-l="zh" lang="zh-CN">用户、社交网络与交互建模</span></li>
+          <li><span data-l="en">Content evolution, belief dynamics, and polarization</span><span data-l="zh" lang="zh-CN">内容演变、观点动态与两极分化</span></li>
+          <li><span data-l="en">Evaluation and validation of social simulations</span><span data-l="zh" lang="zh-CN">社会模拟的评估与验证</span></li>
         </ul>
-        <p class="part-note">How LLM personas pass content along, how it mutates, how beliefs shift, and how to check a simulation against real data.</p>
+        <p class="part-note"><span data-l="en">How LLM personas pass content along, how it mutates, how beliefs shift, and how to check a simulation against real data.</span><span data-l="zh" lang="zh-CN">LLM 扮演的用户如何传递内容、内容如何变形、观点如何转变，以及如何用真实数据检验模拟结果。</span></p>
       </li>
       <li class="part part-3">
         <div class="part-head">
-          <span class="part-num">Part III</span>
-          <span class="part-time">~70 min</span>
+          <span class="part-num"><span data-l="en">Part III</span><span data-l="zh" lang="zh-CN">第三部分</span></span>
+          <span class="part-time"><span data-l="en">~70 min</span><span data-l="zh" lang="zh-CN">约 70 分钟</span></span>
         </div>
-        <h3>Agent-Based Verification and Intervention</h3>
+        <h3><span data-l="en">Agent-Based Verification and Intervention</span><span data-l="zh" lang="zh-CN">基于智能体的核查与干预</span></h3>
         <ul>
-          <li>Evidence retrieval and multi-agent fact-checking</li>
-          <li>Misinformation correction and intervention strategies</li>
-          <li>Reliability and dynamic evaluation of verification agents</li>
+          <li><span data-l="en">Evidence retrieval and multi-agent fact-checking</span><span data-l="zh" lang="zh-CN">证据检索与多智能体事实核查</span></li>
+          <li><span data-l="en">Misinformation correction and intervention strategies</span><span data-l="zh" lang="zh-CN">虚假信息的纠正与干预策略</span></li>
+          <li><span data-l="en">Reliability and dynamic evaluation of verification agents</span><span data-l="zh" lang="zh-CN">核查智能体的可靠性与动态评估</span></li>
         </ul>
-        <p class="part-note">Agents that retrieve evidence, debate, and write corrections, and the failure modes that make verifiers unreliable.</p>
+        <p class="part-note"><span data-l="en">Agents that retrieve evidence, debate, and write corrections, and the failure modes that make verifiers unreliable.</span><span data-l="zh" lang="zh-CN">能够检索证据、相互辩论并撰写更正内容的智能体，以及让核查者变得不可靠的各种失效模式。</span></p>
       </li>
     </ol>
   </div>
@@ -162,33 +169,33 @@
 
 <section class="block" id="schedule">
   <div class="container narrow">
-    <p class="section-label">Schedule</p>
-    <h2>Program</h2>
-    <p class="muted">Room and exact times will be posted once AAAI-27 releases the tutorial program.</p>
+    <p class="section-label"><span data-l="en">Schedule</span><span data-l="zh" lang="zh-CN">日程</span></p>
+    <h2><span data-l="en">Program</span><span data-l="zh" lang="zh-CN">日程安排</span></h2>
+    <p class="muted"><span data-l="en">Room and exact times will be posted once AAAI-27 releases the tutorial program.</span><span data-l="zh" lang="zh-CN">具体教室和时间将在 AAAI-27 公布 Tutorial 日程后更新。</span></p>
     <table class="schedule">
       <thead>
-        <tr><th scope="col">Time</th><th scope="col">Session</th><th scope="col" class="len">Length</th></tr>
+        <tr><th scope="col"><span data-l="en">Time</span><span data-l="zh" lang="zh-CN">时间</span></th><th scope="col"><span data-l="en">Session</span><span data-l="zh" lang="zh-CN">环节</span></th><th scope="col" class="len"><span data-l="en">Length</span><span data-l="zh" lang="zh-CN">时长</span></th></tr>
       </thead>
       <tbody>
         <tr>
-          <td class="t">TBD</td>
-          <td><span class="tag tag-1">Part I</span> Misinformation Generation</td>
-          <td class="len">~70 min</td>
+          <td class="t"><span data-l="en">TBD</span><span data-l="zh" lang="zh-CN">待定</span></td>
+          <td><span class="tag tag-1"><span data-l="en">Part I</span><span data-l="zh" lang="zh-CN">第一部分</span></span> <span data-l="en">Misinformation Generation</span><span data-l="zh" lang="zh-CN">虚假信息的生成</span></td>
+          <td class="len"><span data-l="en">~70 min</span><span data-l="zh" lang="zh-CN">约 70 分钟</span></td>
         </tr>
         <tr>
-          <td class="t">TBD</td>
-          <td><span class="tag tag-2">Part II</span> Agent-Based Propagation Simulation</td>
-          <td class="len">~70 min</td>
+          <td class="t"><span data-l="en">TBD</span><span data-l="zh" lang="zh-CN">待定</span></td>
+          <td><span class="tag tag-2"><span data-l="en">Part II</span><span data-l="zh" lang="zh-CN">第二部分</span></span> <span data-l="en">Agent-Based Propagation Simulation</span><span data-l="zh" lang="zh-CN">基于智能体的传播模拟</span></td>
+          <td class="len"><span data-l="en">~70 min</span><span data-l="zh" lang="zh-CN">约 70 分钟</span></td>
         </tr>
         <tr class="break-row">
-          <td class="t">TBD</td>
-          <td>Coffee break</td>
-          <td class="len">30 min</td>
+          <td class="t"><span data-l="en">TBD</span><span data-l="zh" lang="zh-CN">待定</span></td>
+          <td><span data-l="en">Coffee break</span><span data-l="zh" lang="zh-CN">茶歇</span></td>
+          <td class="len"><span data-l="en">30 min</span><span data-l="zh" lang="zh-CN">30 分钟</span></td>
         </tr>
         <tr>
-          <td class="t">TBD</td>
-          <td><span class="tag tag-3">Part III</span> Agent-Based Verification and Intervention</td>
-          <td class="len">~70 min</td>
+          <td class="t"><span data-l="en">TBD</span><span data-l="zh" lang="zh-CN">待定</span></td>
+          <td><span class="tag tag-3"><span data-l="en">Part III</span><span data-l="zh" lang="zh-CN">第三部分</span></span> <span data-l="en">Agent-Based Verification and Intervention</span><span data-l="zh" lang="zh-CN">基于智能体的核查与干预</span></td>
+          <td class="len"><span data-l="en">~70 min</span><span data-l="zh" lang="zh-CN">约 70 分钟</span></td>
         </tr>
       </tbody>
     </table>
@@ -197,39 +204,39 @@
 
 <section class="block alt" id="organizers">
   <div class="container">
-    <p class="section-label">Organizers</p>
-    <h2>Organizers</h2>
+    <p class="section-label"><span data-l="en">Organizers</span><span data-l="zh" lang="zh-CN">组织者</span></p>
+    <h2><span data-l="en">Organizers</span><span data-l="zh" lang="zh-CN">组织者</span></h2>
     <div class="people">
       <article class="person">
         <img src="assets/img/people/yuhan-liu.jpg" alt="Yuhan Liu" loading="lazy">
         <div>
           <h3><a href="https://liuyuhan31.github.io/" target="_blank" rel="noopener">Yuhan Liu</a></h3>
-          <p class="role">Postdoctoral Researcher, MBZUAI</p>
-          <p>Ph.D., Renmin University of China (2025). Works on agentic AI for a trustworthy information ecosystem, spanning misinformation, LLM agents, and multimodal content, with papers at ACL, EMNLP, IJCAI, SIGIR, NeurIPS, and ICLR. DAAD AInet Fellow and ACL/EMNLP Area Chair.</p>
+          <p class="role"><span data-l="en">Postdoctoral Researcher, MBZUAI</span><span data-l="zh" lang="zh-CN">MBZUAI 博士后研究员</span></p>
+          <p><span data-l="en">Ph.D., Renmin University of China (2025). Works on agentic AI for a trustworthy information ecosystem, spanning misinformation, LLM agents, and multimodal content, with papers at ACL, EMNLP, IJCAI, SIGIR, NeurIPS, and ICLR. DAAD AInet Fellow and ACL/EMNLP Area Chair.</span><span data-l="zh" lang="zh-CN">2025 年博士毕业于中国人民大学。研究面向可信信息生态的智能体 AI，涵盖虚假信息、LLM 智能体和多模态内容，论文发表于 ACL、EMNLP、IJCAI、SIGIR、NeurIPS 和 ICLR 等会议。DAAD AInet Fellow，担任 ACL/EMNLP 领域主席（Area Chair）。</span></p>
         </div>
       </article>
       <article class="person">
         <img src="assets/img/people/xiuying-chen.jpg" alt="Xiuying Chen" loading="lazy">
         <div>
           <h3><a href="https://iriscxy.github.io/" target="_blank" rel="noopener">Xiuying Chen</a></h3>
-          <p class="role">Assistant Professor, MBZUAI</p>
-          <p>Ph.D., KAUST (2024). Leads the HALO Lab on trustworthy language models, publishing at ACL, ICML, NeurIPS, and ICLR. Recipient of an Amazon Research Award and MBZUAI's Rising Star Award; Area Chair for AAAI, ACL, EMNLP, NeurIPS, and KDD.</p>
+          <p class="role"><span data-l="en">Assistant Professor, MBZUAI</span><span data-l="zh" lang="zh-CN">MBZUAI 助理教授</span></p>
+          <p><span data-l="en">Ph.D., KAUST (2024). Leads the HALO Lab on trustworthy language models, publishing at ACL, ICML, NeurIPS, and ICLR. Recipient of an Amazon Research Award and MBZUAI's Rising Star Award; Area Chair for AAAI, ACL, EMNLP, NeurIPS, and KDD.</span><span data-l="zh" lang="zh-CN">2024 年博士毕业于 KAUST。带领 HALO 实验室研究可信语言模型，论文发表于 ACL、ICML、NeurIPS 和 ICLR 等会议。曾获 Amazon Research Award 和 MBZUAI Rising Star Award，担任 AAAI、ACL、EMNLP、NeurIPS 和 KDD 的领域主席。</span></p>
         </div>
       </article>
       <article class="person">
         <img src="assets/img/people/preslav-nakov.jpg" alt="Preslav Nakov" loading="lazy">
         <div>
           <h3><a href="https://mbzuai.ac.ae/study/faculty/preslav-nakov/" target="_blank" rel="noopener">Preslav Nakov</a></h3>
-          <p class="role">Professor and NLP Program Director, MBZUAI</p>
-          <p>Ph.D., UC Berkeley. Works on disinformation, propaganda, fact-checking, and machine-generated content detection. First recipient of Bulgaria's John Atanasoff Presidential Award, Program Co-Chair of ACL 2022, and Action Editor of TACL.</p>
+          <p class="role"><span data-l="en">Professor and NLP Program Director, MBZUAI</span><span data-l="zh" lang="zh-CN">MBZUAI 教授、自然语言处理项目主任</span></p>
+          <p><span data-l="en">Ph.D., UC Berkeley. Works on disinformation, propaganda, fact-checking, and machine-generated content detection. First recipient of Bulgaria's John Atanasoff Presidential Award, Program Co-Chair of ACL 2022, and Action Editor of TACL.</span><span data-l="zh" lang="zh-CN">博士毕业于加州大学伯克利分校。研究虚假信息、宣传操纵、事实核查和机器生成内容检测。是保加利亚 John Atanasoff 总统奖的首位获得者，曾任 ACL 2022 程序委员会联合主席，并担任 TACL 执行编辑（Action Editor）。</span></p>
         </div>
       </article>
       <article class="person">
         <img src="assets/img/people/xiangliang-zhang.jpg" alt="Xiangliang Zhang" loading="lazy">
         <div>
           <h3><a href="https://sites.nd.edu/xiangliang-zhang/" target="_blank" rel="noopener">Xiangliang Zhang</a></h3>
-          <p class="role">Leonard C. Bettex Collegiate Professor, University of Notre Dame</p>
-          <p>Research centers on trustworthy AI, from foundation models to agentic systems. Editor-in-Chief of IEEE Transactions on Knowledge and Data Engineering (TKDE) and ACM SIGKDD Explorations, and Research Track Program Co-Chair of KDD 2026–2027.</p>
+          <p class="role"><span data-l="en">Leonard C. Bettex Collegiate Professor, University of Notre Dame</span><span data-l="zh" lang="zh-CN">University of Notre Dame 讲席教授（Leonard C. Bettex Collegiate Professor）</span></p>
+          <p><span data-l="en">Research centers on trustworthy AI, from foundation models to agentic systems. Editor-in-Chief of IEEE Transactions on Knowledge and Data Engineering (TKDE) and ACM SIGKDD Explorations, and Research Track Program Co-Chair of KDD 2026–2027.</span><span data-l="zh" lang="zh-CN">主要从事可信 AI 研究，范围从基础模型延伸到智能体系统。担任 IEEE Transactions on Knowledge and Data Engineering（TKDE）和 ACM SIGKDD Explorations 主编，以及 KDD 2026–2027 Research Track 程序委员会联合主席。</span></p>
         </div>
       </article>
     </div>
@@ -238,11 +245,11 @@
 
 <section class="block" id="reading">
   <div class="container narrow">
-    <p class="section-label">Reading list</p>
-    <h2>Selected references</h2>
-    <p class="muted">Grouped by tutorial part. This list is still a work in progress; the final version will be posted here.</p>
+    <p class="section-label"><span data-l="en">Reading list</span><span data-l="zh" lang="zh-CN">阅读清单</span></p>
+    <h2><span data-l="en">Selected references</span><span data-l="zh" lang="zh-CN">精选文献</span></h2>
+    <p class="muted"><span data-l="en">Grouped by tutorial part. This list is still a work in progress; the final version will be posted here.</span><span data-l="zh" lang="zh-CN">按 Tutorial 的三个部分分组。清单仍在完善中，最终版本会在这里更新。</span></p>
 
-    <h3 class="rl-head"><span class="tag tag-1">Part I</span> Generation</h3>
+    <h3 class="rl-head"><span class="tag tag-1"><span data-l="en">Part I</span><span data-l="zh" lang="zh-CN">第一部分</span></span> <span data-l="en">Generation</span><span data-l="zh" lang="zh-CN">生成</span></h3>
     <ol class="refs">
       <li><cite>Factuality of Large Language Models: A Survey</cite> Yuxia Wang, Minghan Wang, Muhammad Arslan Manzoor, Fei Liu, Georgi Georgiev, Rocktim Jyoti Das, Preslav Nakov. <span class="venue">EMNLP 2024</span></li>
       <li><cite>Towards Improving Faithfulness in Abstractive Summarization</cite> Xiuying Chen, Mingzhe Li, Xin Gao, Xiangliang Zhang. <span class="venue">NeurIPS 2022</span></li>
@@ -256,7 +263,7 @@
       <li><cite>Invisible Entropy: Towards Safe and Efficient Low-Entropy LLM Watermarking</cite> Tianle Gu, Zongqi Wang, Kexin Huang, Yuanqi Yao, Xiangliang Zhang, Yujiu Yang, Xiuying Chen. <span class="venue">EMNLP 2025</span></li>
     </ol>
 
-    <h3 class="rl-head"><span class="tag tag-2">Part II</span> Propagation</h3>
+    <h3 class="rl-head"><span class="tag tag-2"><span data-l="en">Part II</span><span data-l="zh" lang="zh-CN">第二部分</span></span> <span data-l="en">Propagation</span><span data-l="zh" lang="zh-CN">传播</span></h3>
     <ol class="refs">
       <li><cite>Generative Agents: Interactive Simulacra of Human Behavior</cite> Joon Sung Park, Joseph C. O'Brien, Carrie J. Cai, Meredith Ringel Morris, Percy Liang, Michael S. Bernstein. <span class="venue">UIST 2023</span></li>
       <li><cite>Large Language Model Based Multi-Agents: A Survey of Progress and Challenges</cite> Taicheng Guo, Xiuying Chen, Yaqi Wang, Ruidi Chang, Shichao Pei, Nitesh V. Chawla, Olaf Wiest, Xiangliang Zhang. <span class="venue">IJCAI 2024</span></li>
@@ -266,7 +273,7 @@
       <li><cite>Position: Time to Close The Validation Gap in LLM Social Simulations</cite> Maximilian Puelma Touzel, Sneheel Sarangi, Aurélien Bück-Kaeffer, Zachary Yang, Jean-François Godbout, Reihaneh Rabbany. <span class="venue">ICML 2026</span></li>
     </ol>
 
-    <h3 class="rl-head"><span class="tag tag-3">Part III</span> Verification and intervention</h3>
+    <h3 class="rl-head"><span class="tag tag-3"><span data-l="en">Part III</span><span data-l="zh" lang="zh-CN">第三部分</span></span> <span data-l="en">Verification and intervention</span><span data-l="zh" lang="zh-CN">核查与干预</span></h3>
     <ol class="refs">
       <li><cite>FEVER: A Large-Scale Dataset for Fact Extraction and VERification</cite> James Thorne, Andreas Vlachos, Christos Christodoulopoulos, Arpit Mittal. <span class="venue">NAACL-HLT 2018</span></li>
       <li><cite>OpenFactCheck: A Unified Framework for Factuality Evaluation of LLMs</cite> Hasan Iqbal, Yuxia Wang, Minghan Wang, Georgi Georgiev, Jiahui Geng, Iryna Gurevych, Preslav Nakov. <span class="venue">EMNLP 2024 Demos</span></li>
@@ -285,29 +292,29 @@
 
 <section class="block alt" id="materials">
   <div class="container narrow">
-    <p class="section-label">Materials</p>
-    <h2>Slides and resources</h2>
+    <p class="section-label"><span data-l="en">Materials</span><span data-l="zh" lang="zh-CN">资料</span></p>
+    <h2><span data-l="en">Slides and resources</span><span data-l="zh" lang="zh-CN">幻灯片与相关资源</span></h2>
     <div class="materials">
       <div class="mat">
-        <h3>Slides</h3>
-        <p>Available after the tutorial.</p>
-        <span class="status">Coming soon</span>
+        <h3><span data-l="en">Slides</span><span data-l="zh" lang="zh-CN">幻灯片</span></h3>
+        <p><span data-l="en">Available after the tutorial.</span><span data-l="zh" lang="zh-CN">Tutorial 结束后发布。</span></p>
+        <span class="status"><span data-l="en">Coming soon</span><span data-l="zh" lang="zh-CN">即将发布</span></span>
       </div>
       <div class="mat">
-        <h3>Recording</h3>
-        <p>Posted here if the session is recorded.</p>
-        <span class="status">Coming soon</span>
+        <h3><span data-l="en">Recording</span><span data-l="zh" lang="zh-CN">录像</span></h3>
+        <p><span data-l="en">Posted here if the session is recorded.</span><span data-l="zh" lang="zh-CN">如有录像，会发布在这里。</span></p>
+        <span class="status"><span data-l="en">Coming soon</span><span data-l="zh" lang="zh-CN">即将发布</span></span>
       </div>
       <div class="mat">
-        <h3>Reading list</h3>
-        <p>27 papers grouped by tutorial part.</p>
-        <a class="status status-live" href="#reading">View list</a>
+        <h3><span data-l="en">Reading list</span><span data-l="zh" lang="zh-CN">阅读清单</span></h3>
+        <p><span data-l="en">27 papers grouped by tutorial part.</span><span data-l="zh" lang="zh-CN">27 篇论文，按 Tutorial 的三个部分分组。</span></p>
+        <a class="status status-live" href="#reading"><span data-l="en">View list</span><span data-l="zh" lang="zh-CN">查看清单</span></a>
       </div>
     </div>
 
-    <h3 class="cite-head">Cite this tutorial</h3>
+    <h3 class="cite-head"><span data-l="en">Cite this tutorial</span><span data-l="zh" lang="zh-CN">引用本 Tutorial</span></h3>
     <div class="bibtex">
-      <button class="copy-btn" type="button" data-copy="#bibtex">Copy</button>
+      <button class="copy-btn" type="button" data-copy="#bibtex"><span data-l="en">Copy</span><span data-l="zh" lang="zh-CN">复制</span></button>
 <pre id="bibtex"><code>@misc{liu2027misinfoagents,
   title  = {Misinformation in the Age of LLM Agents:
             Generation, Propagation, and Intervention},
@@ -323,11 +330,11 @@
 
 <section class="cta" id="join" aria-labelledby="join-title">
   <div class="container">
-    <h2 id="join-title">Check Details &amp; Join Us</h2>
-    <p>Don't miss this in-depth tutorial on misinformation in the age of LLM agents.</p>
+    <h2 id="join-title"><span data-l="en">Check Details &amp; Join Us</span><span data-l="zh" lang="zh-CN">了解详情，欢迎参加</span></h2>
+    <p><span data-l="en">Don't miss this in-depth tutorial on misinformation in the age of LLM agents.</span><span data-l="zh" lang="zh-CN">不要错过这场关于 LLM 智能体与虚假信息的深度 Tutorial。</span></p>
     <div class="cta-actions">
-      <a class="cta-btn cta-btn-primary" href="https://aaai.org/conference/aaai/aaai-27/aaai-27-registration/" target="_blank" rel="noopener">Register for AAAI-27</a>
-      <a class="cta-btn cta-btn-ghost" href="https://aaai.org/conference/aaai/aaai-27/tutorial-and-lab-forum/#th01" target="_blank" rel="noopener">Tutorial Details</a>
+      <a class="cta-btn cta-btn-primary" href="https://aaai.org/conference/aaai/aaai-27/aaai-27-registration/" target="_blank" rel="noopener"><span data-l="en">Register for AAAI-27</span><span data-l="zh" lang="zh-CN">注册 AAAI-27</span></a>
+      <a class="cta-btn cta-btn-ghost" href="https://aaai.org/conference/aaai/aaai-27/tutorial-and-lab-forum/#th01" target="_blank" rel="noopener"><span data-l="en">Tutorial Details</span><span data-l="zh" lang="zh-CN">Tutorial 详情</span></a>
     </div>
   </div>
 </section>
@@ -336,11 +343,11 @@
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <p>Questions about the tutorial? Contact <a href="mailto:yuhan.liu@mbzuai.ac.ae">yuhan.liu@mbzuai.ac.ae</a>.</p>
-    <p class="muted">&copy; 2027 The tutorial organizers · MBZUAI · University of Notre Dame · AAAI-27</p>
+    <p><span data-l="en">Questions about the tutorial? Contact <a href="mailto:yuhan.liu@mbzuai.ac.ae">yuhan.liu@mbzuai.ac.ae</a>.</span><span data-l="zh" lang="zh-CN">对 Tutorial 有任何问题，欢迎联系 <a href="mailto:yuhan.liu@mbzuai.ac.ae">yuhan.liu@mbzuai.ac.ae</a>。</span></p>
+    <p class="muted"><span data-l="en">&copy; 2027 The tutorial organizers · MBZUAI · University of Notre Dame · AAAI-27</span><span data-l="zh" lang="zh-CN">&copy; 2027 Tutorial 组织者 · MBZUAI · University of Notre Dame · AAAI-27</span></p>
   </div>
 </footer>
 
-<script src="js/main.js?v=20261114-7"></script>
+<script src="js/main.js?v=20261114-22"></script>
 </body>
 </html>
