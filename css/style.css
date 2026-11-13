@@ -68,7 +68,9 @@ html.zh {
 }
 html.zh .prose p, html.zh .questions li, html.zh .person p, html.zh .part li,
 html.zh .part-note, html.zh .audience p { line-height: 1.8; }
-html.zh h2 { letter-spacing: 0; }
+/* Chinese glyphs read larger than Latin at the same size; a smaller h2 also leaves
+   room so each comma-separated phrase of a heading fits on its own line */
+html.zh h2 { letter-spacing: 0; font-size: clamp(1.5rem, 2.9vw, 2.05rem); }
 .nw { display: inline-block; }  /* keep a Chinese phrase together when the heading wraps */
 html.zh .break-row td { font-style: normal; }  /* no synthetic italics for Chinese */
 html.zh .nav-logo-meta { letter-spacing: 0.04em; }
@@ -190,8 +192,8 @@ p { margin: 0 0 1em; }
   margin-top: 12px; font-family: "Inter", var(--sans); font-weight: 800;
   font-size: clamp(1.875rem, 3.9vw, 2.75rem); line-height: 1.25; color: var(--h-white);
 }
-.hero h1 span { display: block; white-space: nowrap; }
-.hero-zh { margin: 14px auto 0; font-size: 1.25rem; line-height: 1.6; font-weight: 500; letter-spacing: 0.04em; color: var(--h-text-soft); text-shadow: 0 2px 14px rgb(15 23 42 / 0.45); }
+.hero h1 .t { display: block; white-space: nowrap; }
+html.zh .hero h1 { letter-spacing: 0.02em; }
 
 .speaker, .detail {
   background-color: var(--h-card);
@@ -231,7 +233,8 @@ p { margin: 0 0 1em; }
   .hero-head, .speakers { margin-bottom: 64px; }
   .hero-venue { font-size: 1rem; line-height: 1.5rem; }
   .hero h1 { font-size: 1.75rem; text-wrap: balance; }
-  .hero h1 span { display: inline; white-space: normal; }
+  .hero h1 .t { display: inline; white-space: normal; }
+  html.zh .hero h1 .t { display: block; }
   .details { grid-template-columns: 1fr; }
 }
 @media (max-width: 639px) {
@@ -441,7 +444,6 @@ p { margin: 0 0 1em; }
   .nav-lang { padding: 4px 8px; }
   .nav-lang svg { display: none; }
   .nav-toggle { padding: 8px; }
-  .hero-zh { font-size: 1.05rem; }
   .nav-links {
     display: none; position: absolute; top: 100%; left: 0; right: 0;
     flex-direction: column; gap: 0; padding: 8px 16px 16px;
