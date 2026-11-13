@@ -4,23 +4,26 @@
    ========================================================================== */
 
 :root {
+  /* Neutrals: slate, to match the dark header */
   --paper: #ffffff;
-  --paper-alt: #f6f7f9;
+  --paper-alt: #f8fafc;
   --card: #ffffff;
-  --ink: #17191e;
-  --ink-soft: #3a3d46;
-  --muted: #6a6d78;
-  --rule: #e3e5ea;
+  --ink: #0f172a;
+  --ink-soft: #334155;
+  --muted: #64748b;
+  --rule: #e2e8f0;
 
-  --false: #c23b22;      /* generated / spreading misinformation */
-  --amber: #b9771a;      /* distorted */
-  --true: #1d7467;       /* verified / corrected */
-  --false-tint: #f6e1db;
-  --amber-tint: #f5e8cf;
-  --true-tint: #d9ece7;
+  /* Tutorial parts: an analogous violet → indigo → azure progression */
+  --p1: #6d4bc9;         /* Part I · Generation */
+  --p2: #4354cf;         /* Part II · Propagation */
+  --p3: #1170a0;         /* Part III · Intervention */
+  --p1-tint: #efebf9;
+  --p2-tint: #eaecfa;
+  --p3-tint: #e5eff5;
 
-  --accent: var(--false);
-  --focus: #2f5fd0;
+  --accent: #4f46e5;
+  --focus: #4f46e5;
+  --shadow: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -14px rgb(15 23 42 / 0.18);
 
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
   --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -34,21 +37,24 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #14161a;
-    --paper-alt: #1a1d22;
-    --card: #1f2228;
-    --ink: #ece9e1;
-    --ink-soft: #c9c6be;
-    --muted: #979aa3;
-    --rule: #2f333b;
+    --paper: #0f172a;
+    --paper-alt: #131c31;
+    --card: #1e293b;
+    --ink: #e2e8f0;
+    --ink-soft: #cbd5e1;
+    --muted: #94a3b8;
+    --rule: #334155;
 
-    --false: #ec6a50;
-    --amber: #e0a24a;
-    --true: #4fb8a6;
-    --false-tint: #3a211c;
-    --amber-tint: #362a17;
-    --true-tint: #17302c;
-    --focus: #7aa2ff;
+    --p1: #ab94f5;
+    --p2: #8e9cf7;
+    --p3: #62bde0;
+    --p1-tint: #282b4a;
+    --p2-tint: #232c4b;
+    --p3-tint: #1c3247;
+
+    --accent: #a5b4fc;
+    --focus: #a5b4fc;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -14px rgb(0 0 0 / 0.6);
   }
 }
 
@@ -129,6 +135,9 @@ p { margin: 0 0 1em; }
   background-size: cover;
   background-position: center 55%;
   padding: 36px 0 80px;
+  /* Fill the first screen below the 60px nav (+1px border); extra room shows more of the photo */
+  min-height: calc(100vh - 61px);
+  min-height: calc(100svh - 61px);
 }
 .hero h1, .hero h3 { letter-spacing: normal; }
 .hero-venue, .hero h1 { text-shadow: 0 2px 14px rgb(15 23 42 / 0.45); }
@@ -210,24 +219,25 @@ p { margin: 0 0 1em; }
   padding: 2px 0 2px 18px; border-left: 3px solid var(--c);
   color: var(--ink-soft);
 }
-.q-1 { --c: var(--false); }
-.q-2 { --c: var(--amber); }
-.q-3 { --c: var(--true); }
+.q-1 { --c: var(--p1); }
+.q-2 { --c: var(--p2); }
+.q-3 { --c: var(--p3); }
 
 .audience { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 36px; }
-.audience > div { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 20px 22px; }
+.audience > div { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow); }
 .audience h3 { margin-bottom: 8px; }
 .audience p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
 
 /* Outline */
 .parts { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: none; }
 .part {
-  --c: var(--false); --tint: var(--false-tint);
-  background: var(--card); border: 1px solid var(--rule); border-top: 4px solid var(--c);
-  border-radius: var(--radius); padding: 22px 24px 24px; display: flex; flex-direction: column;
+  --c: var(--p1); --tint: var(--p1-tint);
+  background: linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c) 35%, var(--card))) top / 100% 4px no-repeat, var(--card);
+  border: 1px solid var(--rule); box-shadow: var(--shadow);
+  border-radius: var(--radius); padding: 26px 24px 24px; display: flex; flex-direction: column;
 }
-.part-2 { --c: var(--amber); --tint: var(--amber-tint); }
-.part-3 { --c: var(--true); --tint: var(--true-tint); }
+.part-2 { --c: var(--p2); --tint: var(--p2-tint); }
+.part-3 { --c: var(--p3); --tint: var(--p3-tint); }
 .part-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .part-num { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; color: var(--c); letter-spacing: 0.06em; text-transform: uppercase; }
 .part-time { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); }
@@ -253,15 +263,17 @@ p { margin: 0 0 1em; }
   letter-spacing: 0.04em; padding: 2px 7px; border-radius: 3px; margin-right: 8px;
   vertical-align: 2px; white-space: nowrap;
 }
-.tag-1 { background: var(--false-tint); color: var(--false); }
-.tag-2 { background: var(--amber-tint); color: var(--amber); }
-.tag-3 { background: var(--true-tint); color: var(--true); }
+.tag { box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 22%, transparent); }
+.tag-1 { background: var(--p1-tint); color: var(--p1); }
+.tag-2 { background: var(--p2-tint); color: var(--p2); }
+.tag-3 { background: var(--p3-tint); color: var(--p3); }
 
 /* Organizers */
 .people { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .person {
   display: grid; grid-template-columns: 96px 1fr; gap: 20px; align-items: start;
   background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 22px;
+  box-shadow: var(--shadow);
 }
 .person img, .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
 .avatar {
@@ -283,22 +295,22 @@ p { margin: 0 0 1em; }
 .refs .venue { color: var(--muted); font-style: italic; }
 .authors-toggle {
   margin-left: 2px; padding: 0 8px; cursor: pointer;
-  font: inherit; font-size: 0.8rem; line-height: 1.6; color: var(--true);
+  font: inherit; font-size: 0.8rem; line-height: 1.6; color: var(--p3);
   background: none; border: 1px solid var(--rule); border-radius: 999px;
 }
-.authors-toggle:hover { border-color: var(--true); }
+.authors-toggle:hover { border-color: var(--p3); }
 
 /* Materials */
 .materials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
-.mat { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; }
+.mat { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; box-shadow: var(--shadow); }
 .mat h3 { margin-bottom: 6px; }
 .mat p { font-size: 0.9rem; color: var(--muted); }
 .status {
   margin-top: auto; align-self: flex-start; font-family: var(--mono); font-size: 0.74rem;
   padding: 3px 8px; border-radius: 3px; border: 1px dashed var(--rule); color: var(--muted);
 }
-.status-live { border-style: solid; border-color: var(--true); color: var(--true); text-decoration: none; }
-.status-live:hover { background: var(--true); color: var(--paper); }
+.status-live { border-style: solid; border-color: var(--p3); color: var(--p3); text-decoration: none; }
+.status-live:hover { background: var(--p3); color: var(--paper); }
 
 .cite-head { margin: 48px 0 12px; }
 .bibtex { position: relative; }
