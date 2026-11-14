@@ -73,6 +73,7 @@ html.zh .part-note, html.zh .audience p { line-height: 1.8; }
 html.zh h2 { letter-spacing: 0; font-size: clamp(1.5rem, 2.9vw, 2.05rem); }
 .nw { display: inline-block; }  /* keep a Chinese phrase together when the heading wraps */
 html.zh .break-row td { font-style: normal; }  /* no synthetic italics for Chinese */
+html.zh .role { text-spacing-trim: trim-start; }  /* no gap before a full-width "（" that starts a line */
 html.zh .nav-logo-meta { letter-spacing: 0.04em; }
 
 * { box-sizing: border-box; }
@@ -95,7 +96,7 @@ a:hover { color: var(--accent); }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
 
 h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.01em; }
-h2 { font-family: var(--serif); font-size: clamp(1.75rem, 3.4vw, 2.4rem); line-height: 1.2; margin-bottom: 24px; text-wrap: balance; }
+h2 { font-family: var(--serif); font-size: clamp(1.75rem, 3.4vw, 2.2rem); line-height: 1.2; margin-bottom: 24px; text-wrap: balance; }
 h3 { font-size: 1.05rem; line-height: 1.35; }
 p { margin: 0 0 1em; }
 
